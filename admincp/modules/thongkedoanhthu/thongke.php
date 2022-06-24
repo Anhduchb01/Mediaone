@@ -74,7 +74,7 @@
         $("#hienthi").on("click",function() {
             var timeCheckIn = $('#timeCheckIn').val()
             var timeCheckOut = $('#timeCheckOut').val()
-            alert(timeCheckIn);
+           
             $.ajax({
                 url: "modules/thongkedoanhthu/xuli.php",
                 type: "get",
