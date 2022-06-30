@@ -19,8 +19,9 @@
                                 <div class="cart_main--sp_ul">
                                     <div>
                                         <?php
-                                            if(isset($_SESSION['cart'])){
                                             $tongtien=0; 
+                                            if(isset($_SESSION['cart'])){
+                                            
                                             $soluongsanpham=0;   
                                         ?>
                                         

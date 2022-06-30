@@ -33,6 +33,13 @@
             include('./modules/quanlydonhang/xemdonhang.php' );
         }elseif ($tam=='quanlydonhang' && $query=='xuly'){
             include('./modules/quanlydonhang/xuly.php' );
+
+        }elseif ($tam=='qlkhachhang' && $query=='lietke'){
+            include('./modules/qlkhachhang/lietke.php');
+        }elseif ($tam=='qlkhachhang' && $query=='xemdonhang'){
+            include('./modules/qlkhachhang/xemdonhang.php' );
+        }elseif ($tam=='qlkhachhang' && $query=='xuly'){
+            include('./modules/qlkhachhang/xuly.php' );
         
         }elseif ($tam=='quanlytenchinhsach' && $query=='them'){
             include('./modules/qltenchinhsach/them.php');

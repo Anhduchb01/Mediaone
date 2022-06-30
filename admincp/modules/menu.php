@@ -17,6 +17,10 @@
         }
     ?>
     <div class="sanpham">
+        <a href="index.php?action=qlkhachhang&query=lietke">Quản lí khách hàng</a>
+    </div>
+
+    <div class="sanpham">
         <a href="index.php?action=thongkedoanhthu&query=thongke">Thống kê doanh thu</a>
     </div>
 
