@@ -1,5 +1,5 @@
 <?php
-    $sql_sua_sp = "SELECT * FROM tbl_sanpham WHERE id_sanpham='$_GET[idsanpham]' LIMIT 1";
+    $sql_sua_sp = "SELECT * FROM tbl_dvd WHERE id_sanpham='$_GET[idsanpham]' LIMIT 1";
     $query_sua_sp = mysqli_query($mysqli,$sql_sua_sp);
 
 ?>
@@ -9,14 +9,50 @@
 <?php
     while($row = mysqli_fetch_array($query_sua_sp)){
 ?>  
-<form method="POST" action="./modules/quanlysp/xuly.php?idsanpham=<?php echo $_GET['idsanpham']?>" enctype="multipart/form-data"> <!-- muon gui hinh anh qua post pha them enctype -->
+<form method="POST" action="./modules/quanlysp/xulydiaphim.php?idsanpham=<?php echo $_GET['idsanpham']?>" enctype="multipart/form-data"> <!-- muon gui hinh anh qua post pha them enctype -->
         <tr>
             <td class="them_menu1">Tên Sản Phẩm</td>
             <td class="them_menu2"><input type="text" value="<?php echo $row['tensanpham'] ?>" name="tensanpham"></td>
         </tr>
         <tr>
-            <td class="them_menu1">Mã sp</td>
-            <td class="them_menu2"><input type="text" value="<?php echo $row['masp'] ?>" name="masp"></td>
+            <td class="them_menu1">Đạo diễn</td>
+            <td class="them_menu2"><input type="text" value="<?php echo $row['director'] ?>" name="director"></td>
+        </tr>
+        <tr>
+            <td class="them_menu1">Trường phim</td>
+            <td class="them_menu2"><input type="text" value="<?php echo $row['studio'] ?>" name="studio"></td>
+        </tr>
+        <tr>
+            <td  class="them_menu1">Ngôn ngữ</td>
+            <td class="them_menu2"><input type="text" value="<?php echo $row['ngonngu'] ?>" name="ngonngu"></td>
+        </tr>
+        <tr>
+            <td  class="them_menu1">Thời gian phim</td>
+            <td class="them_menu2"><input type="text" value="<?php echo $row['run_time'] ?>" name="run_time"></td>
+        </tr>
+        <tr>
+            <td  class="them_menu1">Thể loại</td>
+            <td class="them_menu2"><input type="text" value="<?php echo $row['media_format'] ?>" name="media_format"></td>
+        </tr>
+        <tr>
+            <td  class="them_menu1">Subtitles</td>
+            <td class="them_menu2"><input type="text" value="<?php echo $row['subtitles'] ?>" name="subtitles"></td>
+        </tr>
+        <tr>
+            <td  class="them_menu1">Người viết phim</td>
+            <td class="them_menu2"><input type="text" value="<?php echo $row['writers'] ?>" name="writers"></td>
+        </tr>
+        <tr>
+            <td  class="them_menu1">Quốc gia</td>
+            <td class="them_menu2"><input type="text" value="<?php echo $row['country'] ?>" name="country"></td>
+        </tr>
+        <tr>
+            <td  class="them_menu1">Kích thước </td>
+            <td class="them_menu2"><input type="text" value="<?php echo $row['kichthuoc'] ?>" name="kichthuoc"></td>
+        </tr>
+        <tr>
+            <td  class="them_menu1">Cân nặng</td>
+            <td class="them_menu2"><input type="text" value="<?php echo $row['cannang'] ?>" name="cannang"></td>
         </tr>
         <tr>
             <td class="them_menu1">Khuyến mãi %</td>

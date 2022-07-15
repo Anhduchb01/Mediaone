@@ -7,7 +7,13 @@
 					</div>
 					<div style="width:100%">
 						<?php	
-								$sql_sanpham = "SELECT * FROM tbl_sanpham WHERE id_sanpham = '$_GET[idsanpham]' AND tinhtrang=1  LIMIT 1"; 
+								// $sql_sanpham = "SELECT * FROM tbl_sanpham WHERE id_sanpham = '$_GET[idsanpham]' AND tinhtrang=1  LIMIT 1"; 
+								$sql_sanpham ="(SELECT `id_sanpham`, `tensanpham`, `giasp`, `km`, `giagockm`, `kichthuoc`, `cannang`,`ngonngu`, `tomtat`, `hinhanh`, `tinhtrang`, `soluong`, `id_danhmuc`, `director`, `run_time`, `studio`, `writers`,NULL as `nghesi`,NULL as `gernes1`,NULL as `nhasx`,NULl as tacgia,NULL as nhaphathanh FROM tbl_dvd WHERE  id_sanpham = '$_GET[idsanpham]' AND id_danhmuc='$_GET[danhmuc]'AND tinhtrang=1  LIMIT 1)
+								UNION 
+								(SELECT `id_sanpham`, `tensanpham`, `giasp`, `km`, `giagockm`, `kichthuoc`, `cannang`, `ngonngu`, `tomtat`, `hinhanh`, `tinhtrang`, `soluong`, `id_danhmuc`,NULL as `director` ,NULL as `run_time` ,NULL as `studio`,NULL as `writers`,NULL as `nghesi`,NULL as `gernes1`,NULL as `nhasx`,`tacgia`, `nhaphathanh` FROM tbl_book WHERE id_sanpham = '$_GET[idsanpham]' AND id_danhmuc='$_GET[danhmuc]'AND tinhtrang=1  LIMIT 1)
+								UNION 
+								(SELECT `id_sanpham`, `tensanpham`, `giasp`, `km`, `giagockm`, `kichthuoc`, `cannang`, `ngonngu`, `tomtat`, `hinhanh`, `tinhtrang`, `soluong`, `id_danhmuc`,NULL as `director` ,NULL as `run_time` ,NULL as `studio`,NULL as `writers`,`nghesi`,`gernes1`,`nhasx`,NULL as`tacgia`,NULL as `nhaphathanh` FROM tbl_cd WHERE id_sanpham = '$_GET[idsanpham]' AND id_danhmuc='$_GET[danhmuc]'AND tinhtrang=1  LIMIT 1) 
+								";
 								$query_sanpham = mysqli_query($mysqli,$sql_sanpham);
 								$giaspkm=0;
 								while($row_sanpham = mysqli_fetch_array($query_sanpham)){
@@ -23,7 +29,12 @@
 								<div class="detail-right-info">
 									<div class="detail-right-info-name">
 										<h1><?php echo $row_sanpham['tensanpham'] ?></h1>
-										<p>MSP: <?php echo $row_sanpham['masp'] ?></p>
+										<ul>
+											<li><?php if($row_sanpham['id_danhmuc']==1){ echo "Author :",$row_sanpham['tacgia'] ;}elseif($row_sanpham['id_danhmuc']==2) {echo 'Artist :',$row_sanpham['nghesi'] ;}else {
+															echo "Director :",$row_sanpham['director'];} ?></li>
+											<li><?php if($row_sanpham['id_danhmuc']==1){ echo "Publisher :",$row_sanpham['nhaphathanh'] ;}elseif($row_sanpham['id_danhmuc']==2) {echo 'Producer :',$row_sanpham['nhasx'] ;}else {
+															echo "Writer :",$row_sanpham['writers'];} ?></li>
+										</ul>
 									</div>
 									<div class="detail-right-info-price">
 										<p><?php if($row_sanpham['km']>0){ echo number_format($giaspkm).'$'; }else {echo number_format($row_sanpham['giasp']).'$';} ?><span><?php if($row_sanpham['km']>0){
@@ -61,7 +72,7 @@
 										</div> -->
 										<div class="wrap-addcart clearfix">
 											<div>
-												<form method="POST" action="./pages/main/themgiohang.php?idsanpham=<?php echo $row_sanpham['id_sanpham'] ?>">
+												<form method="POST" action="./pages/main/themgiohang.php?idsanpham=<?php echo $row_sanpham['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>">
 													<button type  = "submit" id="add-to-cart" title = 'thêm vào giỏ' name="themgiohang" class="giohang add-to-cartProduct button btn-addtocart addtocart-modal"><a >thêm vào giỏ</a></button>
 												</form>
 												
@@ -99,7 +110,16 @@
 					<div class="maincontent">
              
                                 <?php
-                                        $sql_pro = "SELECT * FROM tbl_sanpham order by RAND() LIMIT 4 ";
+                                        // $sql_pro = "SELECT * FROM tbl_sanpham order by RAND() LIMIT 4 ";
+										if($_GET['danhmuc']==1){
+											$sql_pro = "SELECT * FROM `tbl_book` WHERE tinhtrang=1 order by RAND() LIMIT 4";
+										}
+										elseif ($_GET['danhmuc']==2) {
+											$sql_pro = "SELECT * FROM `tbl_cd` WHERE tinhtrang=1 order by RAND() LIMIT 4";
+										}
+										else {
+											$sql_pro = "SELECT * FROM `tbl_dvd` WHERE tinhtrang=1 order by RAND() LIMIT 4";
+										}
                                         $query_pro = mysqli_query($mysqli,$sql_pro);
                                         $giaspkm=0;
                                         while($row_pro = mysqli_fetch_array($query_pro)){
@@ -121,18 +141,29 @@
                                             ?>
                                             <div class="maiconten-top1">
                                                 
-                                                <a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>" class="maincontent-img">
+                                                <a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>" class="maincontent-img">
                                                     <img src="./admincp/modules/quanlysp/uploads/<?php echo $row_pro['hinhanh'] ?>">
                                                 </a>
-                                                <button type  ="submit" title = 'chi tiet' class="muangay"  name="chitiet"><a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>">Chi tiết</a></button>
-                                                <form method="POST" action="./pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham'] ?>">
+                                                <button type  ="submit" title = 'chi tiet' class="muangay"  name="chitiet"><a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>">Chi tiết</a></button>
+                                                <form method="POST" action="./pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>">
                                                 <button type  = "submit" title = 'thêm vào giỏ' name="themgiohang" class="giohang"><a >thêm vào giỏ</a></button>
                                                 </form>
                                             </div>
                                         </div>
                                         <div class="maincontent-info">
-                                            <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham'] ?>" class="maincontent-name"><?php echo $row_pro['tensanpham'] ?></a>
-                                            <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham'] ?>" class="maincontent-gia"><?php if($row_pro['km']>0){ echo number_format($giaspkm).'$'; }else {echo number_format($row_pro['giasp']).'$';} ?>
+                                            <a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>" class="maincontent-name"><?php echo $row_pro['tensanpham'] ?></a>
+                                            
+											<a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>" class="maincontent-chitiet">
+												<ul>
+													<li><?php if($row_pro['id_danhmuc']==1){ echo "Author :",$row_pro['tacgia'] ;}elseif($row_pro['id_danhmuc']==2) {echo 'Artist :',$row_pro['nghesi'] ;}else {
+																	echo "Director :",$row_pro['director'];} ?></li>
+													<li><?php if($row_pro['id_danhmuc']==1){ echo "Publisher :",$row_pro['nhaphathanh'] ;}elseif($row_pro['id_danhmuc']==2) {echo 'Producer :',$row_pro['nhasx'] ;}else {
+																	echo "Writer :",$row_pro['writers'];} ?></li>
+												</ul>
+													
+												</a>
+											
+											<a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>" class="maincontent-gia"><?php if($row_pro['km']>0){ echo number_format($giaspkm).'$'; }else {echo number_format($row_pro['giasp']).'$';} ?>
                                                             <span><?php if($row_pro['km']>0){
                                                                     echo number_format($row_pro['giasp']).'$';
                                                                     }else{

@@ -4,9 +4,14 @@
     <div class="sanpham">
                     <a >Quản lý sản phẩm</a>
                     <div class="sanpham1">
-                        <a href="index.php?action=quanlymenu&query=them">Thêm menu</a>
-                        <a href="index.php?action=quanlysp&query=them">Thêm sản phẩm</a>
-                        <a href="index.php?action=quanlysp&query=lieke">Danh sách sản phẩm</a>
+                        <!-- <a href="index.php?action=quanlymenu&query=them">Thêm menu</a> -->
+                        <a href="index.php?action=quanlysp&query=themsach">Thêm Sách</a>
+                        <a href="index.php?action=quanlysp&query=themdianhac">Thêm Đĩa Nhạc</a>
+                        <a href="index.php?action=quanlysp&query=themdiaphim">Thêm Đĩa Phim</a>
+                        <a href="index.php?action=quanlysp&query=liekesach">Danh sách Sách</a>
+                        <a href="index.php?action=quanlysp&query=liekedianhac">Danh sách Đĩa Nhạc</a>
+                        <a href="index.php?action=quanlysp&query=liekediaphim">Danh sách Đĩa Phim</a>
+                        
                     </div>
                 </div>
     <a href="index.php?action=quanlydonhang&query=lietke">Quản lý đơn hàng</a>

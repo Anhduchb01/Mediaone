@@ -3,7 +3,7 @@
 
 <?php
 	//lấy tất cả từ giỏ hàng và kahchs hàng điều kiện 2 id bằng nhau 
-  $sql_lietke_dh = "SELECT *,COUNT(*)as count FROM tbl_giohang,tbl_khackhang WHERE tbl_giohang.id_khachhang=tbl_khackhang.id_khachhang AND tbl_giohang.cart_status = 0 GROUP BY tbl_khackhang.id_khachhang  ORDER BY tbl_giohang.id_giohang DESC";
+  $sql_lietke_dh = "SELECT *,COUNT(*)as count FROM tbl_giohang,tbl_khackhang WHERE tbl_giohang.id_khachhang=tbl_khackhang.id_khachhang AND tbl_giohang.cart_status = 1 GROUP BY tbl_khackhang.id_khachhang  ORDER BY tbl_giohang.id_giohang DESC";
 	$query_lietke_dh = mysqli_query($mysqli,$sql_lietke_dh);
 ?>
 <table   class='lietkesp'>

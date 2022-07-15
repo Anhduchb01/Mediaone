@@ -4,7 +4,8 @@
 <?php
 	//lấy tất cả từ giỏ hàng và kahchs hàng điều kiện 2 id bằng nhau 
   $sql_lietke_dh = "SELECT * FROM tbl_giohang,tbl_khackhang WHERE tbl_giohang.id_khachhang=tbl_khackhang.id_khachhang ORDER BY tbl_giohang.id_giohang DESC";
-	$query_lietke_dh = mysqli_query($mysqli,$sql_lietke_dh);
+	
+  $query_lietke_dh = mysqli_query($mysqli,$sql_lietke_dh);
 ?>
 <table   class='lietkesp'>
   <tr class="header_lietke">
@@ -33,7 +34,7 @@
     <th><?php echo $row['dienthoai'] ?></th>
     <th><?php echo $row['stime']?></th>
     <th>
-    	<?php if($row['cart_status']==1){
+    	<?php if($row['cart_status']==0){
     		echo '<a class="inputdonhang" href="modules/quanlydonhang/xuly.php?code='.$row['code_cart'].'">Đơn hàng mới</a>';
     	}else{
     		echo 'Đã gửi';

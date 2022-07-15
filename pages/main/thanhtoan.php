@@ -13,10 +13,14 @@
 			
 			$id_sanpham = $value['id'];
 			$soluong = $value['soluong'];
+			$id_danhmuc =$value['danhmuc'];
+			$giasp = $value['giasp']*$soluong;
+			$giagockm = $value['giagockm']*$soluong;
+			
 			
 			 //lay id va so luong tu gio hang 
-				$insert_order_details = "INSERT INTO tbl_cart_details(id_sanpham,code_cart,soluongmua) VALUE('".$id_sanpham."','".$code_order."','".$soluong."')";
-				mysqli_query($mysqli,$insert_order_details);//luu vao bang tbl_cart_details
+			$insert_order_details = "INSERT INTO tbl_cart_details(code_cart,id_sanpham,id_danhmuc,soluongmua,giasp,giagockm) VALUE('".$code_order."','".$id_sanpham."','".$id_danhmuc."','".$soluong."','".$giasp."','".$giagockm."')";
+			mysqli_query($mysqli,$insert_order_details);//luu vao bang tbl_cart_details
 		}
 	}
 	unset($_SESSION['cart']);//khi thanh toan thanh cong thi xoa bo gio hang

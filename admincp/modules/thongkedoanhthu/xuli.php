@@ -14,7 +14,7 @@
 include('../../config/config.php');
 $timeCheckIn = $_GET['timeCheckIn'];
 $timeCheckOut = $_GET['timeCheckOut'];
-$sql_lietke_dh = "SELECT * FROM tbl_giohang,tbl_khackhang,tbl_cart_details,tbl_sanpham WHERE tbl_cart_details.id_sanpham=tbl_sanpham.id_sanpham AND tbl_cart_details.code_cart=tbl_giohang.code_cart AND tbl_giohang.id_khachhang=tbl_khackhang.id_khachhang AND tbl_giohang.stime BETWEEN  '".$timeCheckIn."' AND '".$timeCheckOut."' ORDER BY tbl_giohang.id_giohang DESC";
+$sql_lietke_dh = "SELECT * FROM tbl_giohang,tbl_khackhang,tbl_cart_details WHERE   tbl_cart_details.code_cart=tbl_giohang.code_cart AND tbl_giohang.id_khachhang=tbl_khackhang.id_khachhang AND tbl_giohang.cart_status =1 AND tbl_giohang.stime BETWEEN  '".$timeCheckIn."' AND '".$timeCheckOut."' ORDER BY tbl_giohang.id_giohang DESC";
 $query_lietke_dh = mysqli_query($mysqli,$sql_lietke_dh);
 
 $i = 0;

@@ -10,8 +10,8 @@
                     }
                     if($tam=='danhmuc'){
                        include('./pages/main/danhmuc.php');
-                    }elseif($tam=='sanpham'){
-                        include('./pages/main/sanpham.php');
+                    // }elseif($tam=='sanpham'){
+                    //     include('./pages/main/sanpham.php');
                     }elseif($tam=='giohang'){
                         include('./pages/main/giohang.php');
                     }elseif($tam=='dangky'){

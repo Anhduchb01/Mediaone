@@ -13,7 +13,7 @@
                             <form action="index.php?quanly=timkiem" method="POST">
                                 <input  id="search" type="text" class="search_modal-input" placeholder="Giá thấp" name="giathap">
                                 <input  id="search" type="text" class="search_modal-input" placeholder="Giá cao" name="giacao">
-                                <input  id = "search_name" type="text" class="search_modal-input"placeholder="Tên sản phẩm" name="tukhoa">
+                                
                                 <input class="search_modal_btn" type="submit" name="timkiem" value="Tìm kiếm">
                                 
                             </form>

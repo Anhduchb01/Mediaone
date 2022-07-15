@@ -38,7 +38,8 @@
                             $soluongsanpham=0; 
                             foreach($_SESSION['cart'] as $cart_item){
                             $soluongsanpham+=$cart_item['soluong'];}
-                            ?>(<?php echo $soluongsanpham?>)
+                            ?>
+                            (<?php echo $soluongsanpham?>)
                     <?php }
                     ?>
                     </i>

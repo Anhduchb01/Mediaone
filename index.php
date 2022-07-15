@@ -17,7 +17,9 @@
     <body>
         <div class="wappter">
             <?php
+               
                 session_start();
+                
                 include('./admincp/config/config.php');
                 include('./pages/header.php');
                 include('./pages/siderbar.php');

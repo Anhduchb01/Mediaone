@@ -1,4 +1,4 @@
-<!-- phần code của định -->
+
 <div class="main-slider">
     <?php
         $sql_anhtrangbia = "SELECT * FROM tbl_anhtrangbia WHERE tinhtrang=1";
@@ -32,7 +32,12 @@
         <a href="index.php?quanly=shopall"  class="section-sub-heading">Xem Thêm</a>
         <div class="maincontent">
             <?php
-                $sql_pro = "SELECT * FROM tbl_sanpham WHERE tinhtrang=1 LIMIT 12 ";
+                $sql_pro = "(SELECT `id_sanpham`, `tensanpham`, `giasp`, `km`, `giagockm`, `kichthuoc`, `cannang`,`ngonngu`, `tomtat`, `hinhanh`, `tinhtrang`, `soluong`, `id_danhmuc`, `director`, `run_time`, `studio`, `writers`,NULL as `nghesi`,NULL as `gernes1`,NULL as `nhasx`,NULl as tacgia,NULL as nhaphathanh FROM tbl_dvd WHERE tinhtrang=1 LIMIT 4)
+                UNION 
+                (SELECT `id_sanpham`, `tensanpham`, `giasp`, `km`, `giagockm`, `kichthuoc`, `cannang`, `ngonngu`, `tomtat`, `hinhanh`, `tinhtrang`, `soluong`, `id_danhmuc`,NULL as `director` ,NULL as `run_time` ,NULL as `studio`,NULL as `writers`,NULL as `nghesi`,NULL as `gernes1`,NULL as `nhasx`,`tacgia`, `nhaphathanh` FROM tbl_book WHERE tinhtrang=1 LIMIT 4)
+                UNION 
+                (SELECT `id_sanpham`, `tensanpham`, `giasp`, `km`, `giagockm`, `kichthuoc`, `cannang`, `ngonngu`, `tomtat`, `hinhanh`, `tinhtrang`, `soluong`, `id_danhmuc`,NULL as `director` ,NULL as `run_time` ,NULL as `studio`,NULL as `writers`,`nghesi`,`gernes1`,`nhasx`,NULL as`tacgia`,NULL as `nhaphathanh` FROM tbl_cd WHERE tinhtrang=1 LIMIT 4) 
+                ";
                 $query_pro = mysqli_query($mysqli,$sql_pro);
                 $giaspkm=0;
                 while($row_pro = mysqli_fetch_array($query_pro)){
@@ -54,25 +59,47 @@
                     ?>
                     <div class="maiconten-top1">
                         
-                        <a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>" class="maincontent-img">
+                        <a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>" class="maincontent-img">
                             <img src="./admincp/modules/quanlysp/uploads/<?php echo $row_pro['hinhanh'] ?>">
                         </a>
-                        <button type  ="submit" title = 'chi tiet' class="muangay"  name="chitiet"><a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>">Chi tiết</a></button>
-                        <form method="POST" action="./pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham'] ?>">
+                        <button type  ="submit" title = 'chi tiet' class="muangay"  name="chitiet"><a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>">Chi tiết</a></button>
+                        <form method="POST" action="./pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>">
                         <button type  = "submit" title = 'thêm vào giỏ' name="themgiohang" class="giohang"><a >thêm vào giỏ</a></button>
                         </form>
                     </div>
                 </div>
                 <div class="maincontent-info">
-                    <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham'] ?>" class="maincontent-name"><?php echo $row_pro['tensanpham'] ?></a>
-                    <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham'] ?>" class="maincontent-gia"><?php if($row_pro['km']>0){ echo number_format($giaspkm).'vnd'; }else {echo number_format($row_pro['giasp']).'vnd';} ?>
+                    <a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>" class="maincontent-name"><?php echo 'BOOK :',$row_pro['tensanpham'] ?>
+                    
+                
+                
+                    </a>
+                    <a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>" class="maincontent-chitiet">
+                    <ul>
+                        <li><?php if($row_pro['id_danhmuc']==1){ echo "Author :",$row_pro['tacgia'] ;}elseif($row_pro['id_danhmuc']==2) {echo 'Artist :',$row_pro['nghesi'] ;}else {
+                                        echo "Director :",$row_pro['director'];} ?></li>
+                        <li><?php if($row_pro['id_danhmuc']==1){ echo "Publisher :",$row_pro['nhaphathanh'] ;}elseif($row_pro['id_danhmuc']==2) {echo 'Producer :',$row_pro['nhasx'] ;}else {
+                                        echo "Writer :",$row_pro['writers'];} ?></li>
+                    </ul>
+                        
+                    </a>
+
+
+                    <a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>" class="maincontent-gia"><?php if($row_pro['km']>0){ echo number_format($row_pro['giagockm']).'$'; }else {echo number_format($row_pro['giasp']).'$';} ?>
                                     <span><?php if($row_pro['km']>0){
-                                            echo number_format($row_pro['giasp']).'vnd';
+                                            echo number_format($row_pro['giasp']).'$';
                                             }else{
 
                                             }
                                             ?>                                                                                                                                                                                                        
-                                    </span></a>
+                                    </span>
+                                    
+                                    
+                                    
+                                </a>
+                                
+                    
+                    
                 </div>
             </div>
             </ul>
@@ -84,11 +111,9 @@
         </div>
         
     </div>
-</div>
-<!-- phần code của phương anh -->
-<!-- <div id="phuonganh">
-    <h2 class="phuonganhheader">The Journal</h2>
-    <div class="journal">
+<!-- </div>
+
+
         <?php
             $sql_baibao = "SELECT * FROM tbl_baibao WHERE tinhtrang=1";
             $query_baibao = mysqli_query($mysqli,$sql_baibao);
@@ -107,5 +132,4 @@
                 }
         ?>
     </div>
-</div> -->
-<!-- kết thúc code phương anh -->
+</div> --> 

@@ -7,18 +7,33 @@
             $tam = '';
             $query = '';
          }
-        if($tam=='quanlymenu' && $query=='them'){
-            include('./modules/quanlymenu/them.php' );
-            include('./modules/quanlymenu/lietke.php');
-        }elseif ($tam=='quanlymenu' && $query=='sua'){
-            include('./modules/quanlymenu/sua.php' );
+        // if($tam=='quanlymenu' && $query=='them'){
+        //     include('./modules/quanlymenu/them.php' );
+        //     include('./modules/quanlymenu/lietke.php');
+        // }elseif ($tam=='quanlymenu' && $query=='sua'){
+        //     include('./modules/quanlymenu/sua.php' );
 
-        }elseif ($tam=='quanlysp' && $query=='them'){
-            include('./modules/quanlysp/them.php' );
-        }elseif ($tam=='quanlysp' && $query=='lieke'){
-            include('./modules/quanlysp/lietke.php');
-        }elseif ($tam=='quanlysp' && $query=='sua'){
-            include('./modules/quanlysp/sua.php' );
+        if ($tam=='quanlysp' && $query=='themsach'){
+            include('./modules/quanlysp/themsach.php' );
+        }elseif ($tam=='quanlysp' && $query=='liekesach'){
+            include('./modules/quanlysp/lietkesach.php');
+        }elseif ($tam=='quanlysp' && $query=='suasach'){
+            include('./modules/quanlysp/suasach.php' );
+
+        }elseif ($tam=='quanlysp' && $query=='themdianhac'){
+            include('./modules/quanlysp/themdianhac.php');
+        }elseif ($tam=='quanlysp' && $query=='suadianhac'){
+            include('./modules/quanlysp/suadianhac.php' );
+        }elseif ($tam=='quanlysp' && $query=='liekedianhac'){
+            include('./modules/quanlysp/lietkedianhac.php');
+
+        }elseif ($tam=='quanlysp' && $query=='themdiaphim'){
+            include('./modules/quanlysp/themdiaphim.php' );
+        }elseif ($tam=='quanlysp' && $query=='liekediaphim'){
+            include('./modules/quanlysp/lietkediaphim.php');
+        }elseif ($tam=='quanlysp' && $query=='suadiaphim'){
+            include('./modules/quanlysp/suadiaphim.php' );
+        
         
         }elseif ($tam=='thongkedoanhthu'&& $query=='thongke' ){
             include('./modules/thongkedoanhthu/thongke.php' );  
