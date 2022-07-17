@@ -88,7 +88,7 @@
                 unlink('./uploads/'.$row['hinhanh']);
             }
         }else{
-            $sql_update = "UPDATE tbl_dvd SET tensanpham='".$tensanpham."','".$director."','".$studio."','".$ngonngu."','".$run_time."','".$media_format."','".$subtitles."','".$writers."','".$country."',kichthuoc='".$kichthuoc."',cannang='".$cannang."',giasp='".$giasp."',km='".$km."',giagockm='".$giagockm."',soluong='".$soluong."',tomtat='".$tomtat."',tinhtrang='".$tinhtrang."',id_danhmuc='".$danhmuc."' WHERE id_sanpham='$_GET[idsanpham]'";
+            $sql_update = "UPDATE tbl_dvd SET tensanpham='".$tensanpham."',director='".$director."',studio='".$studio."',ngonngu='".$ngonngu."',run_time='".$run_time."',media_format='".$media_format."',subtitles='".$subtitles."',writers='".$writers."',country='".$country."',kichthuoc='".$kichthuoc."',cannang='".$cannang."',giasp='".$giasp."',km='".$km."',giagockm='".$giagockm."',soluong='".$soluong."',tomtat='".$tomtat."',tinhtrang='".$tinhtrang."',id_danhmuc='".$danhmuc."' WHERE id_sanpham='$_GET[idsanpham]'";
 
         }
         mysqli_query($mysqli,$sql_update);

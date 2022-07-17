@@ -60,7 +60,7 @@
         </tr>
         <tr>
             <td class="them_menu1">Giá sp</td>
-            <td class="them_menu2"><input type="number" value="<?php echo $row['giasp'] ?>" name="giasp"></td>
+            <td class="them_menu2"><input type="number"  value="<?php echo $row['giasp'] ?>" name="giasp"></td>
         </tr>
         <tr>
             <td class="them_menu1">Giá gốc Khuyến mãi</td>
