@@ -336,8 +336,7 @@ CREATE TABLE `tbl_giohang` (
   `code_cart` varchar(10) DEFAULT NULL,
   `cart_status` int(11) NOT NULL,
   `stime` date NOT NULL,
-  PRIMARY KEY (`id_giohang`),
-  CONSTRAINT `tbl_giohang_ibfk_1` FOREIGN KEY (`id_khachhang`) REFERENCES `tbl_khackhang` (`id_khachhang`)
+  PRIMARY KEY (`id_giohang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `tbl_giohang` (`id_giohang`, `id_khachhang`, `code_cart`, `cart_status`, `stime`) VALUES
@@ -399,4 +398,4 @@ INSERT INTO `tbl_tenchinhsach` (`id_tenchinhsach`, `tenchinhsach`, `thutu`) VALU
 (8,	'Hướng dẫn mua hàng',	6),
 (9,	'Chính sách bảo mật',	7);
 
--- 2022-07-15 08:07:56
+-- 2022-07-15 17:32:17
