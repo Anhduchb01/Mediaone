@@ -94,9 +94,9 @@
                         
                             </a>
                             
-                            <a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>" class="maincontent-gia"><?php if($row_pro['km']>0){ echo number_format($giaspkm).'vnd'; }else {echo number_format($row_pro['giasp']).'vnd';} ?>
+                            <a href="index.php?quanly=chitiet&idsanpham=<?php echo $row_pro['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>" class="maincontent-gia"><?php if($row_pro['km']>0){ echo number_format($giaspkm).'$'; }else {echo number_format($row_pro['giasp']).'$';} ?>
                                             <span><?php if($row_pro['km']>0){
-                                                    echo number_format($row_pro['giasp']).'vnd';
+                                                    echo number_format($row_pro['giasp']).'$';
                                                     }else{
 
                                                     }
