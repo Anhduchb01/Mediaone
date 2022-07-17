@@ -72,7 +72,7 @@
 										</div> -->
 										<div class="wrap-addcart clearfix">
 											<div>
-												<form method="POST" action="./pages/main/themgiohang.php?idsanpham=<?php echo $row_sanpham['id_sanpham'] ?>&danhmuc=<?php echo $row_pro['id_danhmuc'] ?>">
+												<form method="POST" action="./pages/main/themgiohang.php?idsanpham=<?php echo $row_sanpham['id_sanpham'] ?>&danhmuc=<?php echo $row_sanpham['id_danhmuc'] ?>">
 													<button type  = "submit" id="add-to-cart" title = 'thêm vào giỏ' name="themgiohang" class="giohang add-to-cartProduct button btn-addtocart addtocart-modal"><a >thêm vào giỏ</a></button>
 												</form>
 												
